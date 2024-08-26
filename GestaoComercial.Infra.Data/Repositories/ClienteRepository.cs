@@ -45,7 +45,7 @@ namespace GestaoComercial.Infra.Data.Repositories
                 SELECT c.*, p.*
                 FROM CLIENTE c
                 LEFT JOIN PEDIDO p ON c.CLIENTEID = p.CLIENTEID
-                WHERE @Nome IS NULL OR c.NOME LIKE @Nome"; ;
+                WHERE @Nome IS NULL OR c.NOME LIKE @Nome";
 
             var clienteDictionary = new Dictionary<int, Cliente>();
 
