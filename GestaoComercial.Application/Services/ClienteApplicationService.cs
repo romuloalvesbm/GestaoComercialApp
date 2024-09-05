@@ -39,9 +39,9 @@ namespace GestaoComercial.Application.Services
             return await _mediator.Send(command);
         }
 
-        public async Task<Result<ICollection<ClienteDto>>> Consulta(string? nome = null)
+        public async Task<Result<ICollection<ClienteDto>>> Consulta(string? nome)
         {
-            var cacheKey = nome == null ? "listClientesAll" : $"listclientes_nome_={nome}";
+            var cacheKey = nome == null ? "listClientesAll" : $"listclientes_nome_{nome}";
             var query = await _redisCacheService.GetCacheAsync<ICollection<Cliente>>(cacheKey);
 
             if (query == null)

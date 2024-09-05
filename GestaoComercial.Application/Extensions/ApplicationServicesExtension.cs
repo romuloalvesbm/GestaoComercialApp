@@ -23,6 +23,7 @@ namespace GestaoComercial.Application.Extensions
 
             //registrando as interfaces/classes de serviço da aplicação
             services.AddTransient<IClienteApplicationService, ClienteApplicationService>();
+            services.AddTransient<IUsuarioApplicationService, UsuarioAplicationService>();
 
             return services;
         }

@@ -1,6 +1,7 @@
 using GestaoComercial.Infra.Redis.Extensions;
 using GestaoComercial.Infra.Data.Extensions;
 using GestaoComercial.Application.Extensions;
+using GestaoComercial.Infra.External.Identity.Extensions;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc;
 using GestaoComercial.Presentation.Extensions;
@@ -33,6 +34,7 @@ builder.Services.AddCorsConfig();
 builder.Services.AddApplicationServices();
 builder.Services.AddDapperConfig(builder.Configuration);
 builder.Services.AddRedisConfig(builder.Configuration);
+builder.Services.ExternalComercialConfig(builder.Configuration);
 
 
 var app = builder.Build();

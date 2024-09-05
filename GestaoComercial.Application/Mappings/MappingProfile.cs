@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using GestaoComercial.Application.Commands;
+using GestaoComercial.Application.Models;
 using GestaoComercial.Domain.Entities;
+using GestaoComercial.Infra.External.Identity.Model.Request;
+using GestaoComercial.Infra.External.Identity.Model.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +23,13 @@ namespace GestaoComercial.Application.Mappings
             CreateMap<ClienteUpdateCommand, Cliente>();
 
             CreateMap<ClienteDeleteCommand, Cliente>();
+
+            #endregion
+
+            #region Usuario
+
+            CreateMap<AutenticarUsuarioRequestModel, LoginIdentityRequest>();
+            CreateMap<IdentityAutenticarUsuarioResponse, AutenticarUsuarioResponseModel>();
 
             #endregion
         }

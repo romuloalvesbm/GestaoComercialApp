@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GestaoComercial.Domain\GestaoComercial.Domain.csproj" />
     <ProjectReference Include="..\GestaoComercial.Infra.Data\GestaoComercial.Infra.Data.csproj" />
+    <ProjectReference Include="..\GestaoComercial.Infra.External.Identity\GestaoComercial.Infra.External.Identity.csproj" />
     <ProjectReference Include="..\GestaoComercial.Infra.Redis\GestaoComercial.Infra.Redis.csproj" />
   </ItemGroup>
 
