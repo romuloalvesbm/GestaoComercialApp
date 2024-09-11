@@ -10,5 +10,7 @@ namespace GestaoComercial.Infra.Redis.Interfaces
     {
         Task SetCacheAsync<T>(string key, T item, TimeSpan expiration);
         Task<T?> GetCacheAsync<T>(string key);
+        IEnumerable<string> SearchKeys(string prefix);
+        Task DeleteKeysByPrefixAsync(string prefix);
     }
 }
