@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GestaoComercial.Application.Commands;
+using GestaoComercial.Application.Dtos;
 using GestaoComercial.Application.Models;
 using GestaoComercial.Domain.Entities;
 using GestaoComercial.Infra.External.Identity.Model.Request;
@@ -29,7 +30,7 @@ namespace GestaoComercial.Application.Mappings
             #region Usuario
 
             CreateMap<AutenticarUsuarioRequestModel, LoginIdentityRequest>();
-            CreateMap<IdentityAutenticarUsuarioResponse, AutenticarUsuarioResponseModel>();
+            CreateMap<IdentityAutenticarUsuarioResponse, UsuarioPermissaoDTO>();
 
             #endregion
         }

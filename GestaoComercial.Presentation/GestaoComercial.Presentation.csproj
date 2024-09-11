@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoComercial.Application\GestaoComercial.Application.csproj" />
+    <ProjectReference Include="..\GestaoComercial.CrossCutting.Authorization\GestaoComercial.CrossCutting.Authorization.csproj" />
     <ProjectReference Include="..\GestaoComercial.Domain\GestaoComercial.Domain.csproj" />
     <ProjectReference Include="..\GestaoComercial.Infra.Data\GestaoComercial.Infra.Data.csproj" />    
     <ProjectReference Include="..\GestaoComercial.Infra.External.Identity\GestaoComercial.Infra.External.Identity.csproj" />

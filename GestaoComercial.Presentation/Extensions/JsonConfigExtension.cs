@@ -14,7 +14,6 @@ namespace GestaoComercial.Presentation.Extensions
             });
 
             return services;
-
         }
     }
 }

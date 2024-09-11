@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoComercial.Infra.External.Identity.Settings
+namespace GestaoComercial.CrossCutting.Authorization.Settings
 {
-    public class JwtTokenSettings
+    public class JwtTokenSettingsIdentity
     {
         public string? Issuer { get; set; }
         public string? Audience { get; set; }

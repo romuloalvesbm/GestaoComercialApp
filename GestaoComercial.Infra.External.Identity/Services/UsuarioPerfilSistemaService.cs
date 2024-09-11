@@ -31,7 +31,7 @@ namespace GestaoComercial.Infra.External.Identity.Services
             //Console.WriteLine(await request1.Content.ReadAsStringAsync());
 
             // Cria uma instância de HttpClient usando o IHttpClientFactory
-            request1.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token!.accessToken);
+            request1.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token!.AccessToken);
 
             var client = _httpClientFactory.CreateClient("ApiExternalIdentity");
 
@@ -60,7 +60,7 @@ namespace GestaoComercial.Infra.External.Identity.Services
             var request = HttpRequestHelper.CreateRequest(HttpMethod.Get, string.Format(UriSetup.GetUsuarioPorId, sistemaId, userId));
 
             // Cria uma instância de HttpClient usando o IHttpClientFactory
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token!.accessToken);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token!.AccessToken);
 
             var client = _httpClientFactory.CreateClient("ApiExternalIdentity");
 

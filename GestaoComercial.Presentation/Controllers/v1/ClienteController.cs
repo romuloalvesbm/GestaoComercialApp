@@ -4,6 +4,7 @@ using GestaoComercial.Application.Dtos;
 using GestaoComercial.Application.Interfaces;
 using GestaoComercial.Application.Services;
 using GestaoComercial.Application.Validation;
+using GestaoComercial.CrossCutting.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace GestaoComercial.Presentation.Controllers.v1
         /// <summary>
         /// Serviço para cadastrar Cliente.
         /// </summary>
+        [ClaimsAuthorize("CustomizePermission", "CadastrarCliente")]
         [HttpPost]
         [ProducesResponseType(typeof(Result<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -44,6 +46,7 @@ namespace GestaoComercial.Presentation.Controllers.v1
         /// <summary>
         /// Serviço para alterar Cliente.
         /// </summary>
+        [ClaimsAuthorize("CustomizePermission", "EditarCliente")]
         [HttpPut]
         [ProducesResponseType(typeof(Result<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -64,6 +67,7 @@ namespace GestaoComercial.Presentation.Controllers.v1
         /// <summary>
         /// Serviço para excluir Cliente.
         /// </summary>
+        [ClaimsAuthorize("CustomizePermission", "ExcluirCliente")]
         [HttpDelete]
         [ProducesResponseType(typeof(Result<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -84,11 +88,12 @@ namespace GestaoComercial.Presentation.Controllers.v1
         /// <summary>
         /// Serviço para listar Cliente.
         /// </summary>
+        [ClaimsAuthorize("CustomizePermission", "ListarCliente")]
         [HttpGet("GetAllCliente")]
         [ProducesResponseType(typeof(ClienteDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAllFuncionario([FromQuery]string? nome = null)
+        public async Task<IActionResult> GetAllCliente([FromQuery]string? nome = null)
         {
             try
             {

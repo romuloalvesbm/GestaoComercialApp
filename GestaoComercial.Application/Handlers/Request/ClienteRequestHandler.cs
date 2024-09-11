@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GestaoComercial.Application.Commands;
+using GestaoComercial.Application.Handlers.Notifications;
 using GestaoComercial.Application.Validation;
 using GestaoComercial.Domain.Entities;
 using GestaoComercial.Domain.Interfaces;
@@ -20,11 +21,13 @@ namespace GestaoComercial.Application.Handlers.Request
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public ClienteRequestHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public ClienteRequestHandler(IUnitOfWork unitOfWork, IMapper mapper, IMediator mediator)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _mediator = mediator;
         }
 
         public async Task<Result> Handle(ClienteCreateCommand request, CancellationToken cancellationToken)
@@ -45,6 +48,8 @@ namespace GestaoComercial.Application.Handlers.Request
                 {
                     await _unitOfWork.ClienteRepository.Inserir(cliente);
                     await _unitOfWork.Commit();
+                    await _mediator.Publish(new OperacaoNotification { Operacao = "Create", ChaveRedis = "listClientesAll" });
+
                     return Result.Ok("Cliente cadastrado com sucesso");
                 }
                 catch
@@ -79,6 +84,7 @@ namespace GestaoComercial.Application.Handlers.Request
                 {
                     await _unitOfWork.ClienteRepository.Alterar(cliente);
                     await _unitOfWork.Commit();
+                    await _mediator.Publish(new OperacaoNotification { Operacao = "Update", ChaveRedis = "listClientesAll" });
                     return Result.Ok("Cliente atualizado com sucesso");
                 }
                 catch
@@ -113,6 +119,7 @@ namespace GestaoComercial.Application.Handlers.Request
                 {
                     await _unitOfWork.ClienteRepository.Excluir(cliente);
                     await _unitOfWork.Commit();
+                    await _mediator.Publish(new OperacaoNotification { Operacao = "Delete", ChaveRedis = "listClientesAll" });
                     return Result.Ok("Cliente excluído com sucesso");
                 }
                 catch

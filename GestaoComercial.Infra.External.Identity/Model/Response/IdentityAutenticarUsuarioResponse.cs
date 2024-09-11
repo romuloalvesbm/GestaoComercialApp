@@ -8,10 +8,10 @@ namespace GestaoComercial.Infra.External.Identity.Model.Response
 {
     public class IdentityAutenticarUsuarioResponse
     {
-        public string? usuarioId { get; set; }
-        public string? nome { get; set; }
-        public string? email { get; set; }
-        public DateTime? dataHoraAcesso { get; set; }
-        public string? accessToken { get; set; }
+        public string? UsuarioId { get; set; }
+        public string? Nome { get; set; }
+        public string? Email { get; set; }
+        public DateTime? DataHoraAcesso { get; set; }
+        public string? AccessToken { get; set; }
     }
 }

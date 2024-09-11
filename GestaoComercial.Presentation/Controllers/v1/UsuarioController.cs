@@ -4,8 +4,10 @@ using GestaoComercial.Application.Interfaces;
 using GestaoComercial.Application.Models;
 using GestaoComercial.Application.Services;
 using GestaoComercial.Application.Validation;
+using GestaoComercial.CrossCutting.Authorization;
 using GestaoComercial.Infra.External.Identity.Model.Request;
 using GestaoComercial.Infra.External.Identity.Model.Response;
+using GestaoComercial.Presentation.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +19,12 @@ namespace GestaoComercial.Presentation.Controllers.v1
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioApplicationService _usuarioApplicationService;
+        private readonly JwtTokenService _jwtTokenService;
 
-        public UsuarioController(IUsuarioApplicationService usuarioApplicationService)
+        public UsuarioController(IUsuarioApplicationService usuarioApplicationService, JwtTokenService jwtTokenService)
         {
             _usuarioApplicationService = usuarioApplicationService;
+            _jwtTokenService = jwtTokenService;
         }
 
         /// <summary>
@@ -34,8 +38,22 @@ namespace GestaoComercial.Presentation.Controllers.v1
         {
             try
             {
-                var result = await _usuarioApplicationService.GetToken(model);
-                return result.Success ? Ok(result) : BadRequest(result);
+                var result = await _usuarioApplicationService.GetPermission(model);
+                if (result != null && result.Permissoes.Count > 0)
+                {
+                    return Ok(Result.Ok(new AutenticarUsuarioResponseModel
+                    {
+                        UsuarioId = result.UsuarioId,
+                        Email = result.Email,
+                        Nome = result.Nome,
+                        DataHoraAcesso = result.DataHoraAcesso,
+                        AccessToken = _jwtTokenService.CreateToken(result)
+                    }));                    
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, Result.Fail("Acesso negado!"));
+                }            
             }
             catch (Exception e)
             {
@@ -44,9 +62,10 @@ namespace GestaoComercial.Presentation.Controllers.v1
         }
 
         /// <summary>
-        /// Serviço para logar o usuário
+        /// Serviço para obter informações do usuário no sistema
         /// </summary>
         [HttpGet("GetUsuario")]
+        [ClaimsAuthorize("CustomizePermission", "InfoUsuarioIdentity")]
         [ProducesResponseType(typeof(Result<IdentityUsuarioPerfilSistemaResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

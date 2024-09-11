@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDD", "DDD", "{A36F63B1-21F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTS", "TESTS", "{DDF01E31-0635-4F57-855E-3BFB91AF6E06}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E2F85294-97AC-4DA7-A387-9094B0E13B92}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Application", "1-Application", "{E2F85294-97AC-4DA7-A387-9094B0E13B92}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{58A6F616-232B-4254-AE41-B4BE3E908DD1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Domain", "2-Domain", "{58A6F616-232B-4254-AE41-B4BE3E908DD1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{CF1C0382-4AEC-423C-BA17-5C000C9C97A0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{CF1C0382-4AEC-423C-BA17-5C000C9C97A0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoComercial.Infra.Redis", "GestaoComercial.Infra.Redis\GestaoComercial.Infra.Redis.csproj", "{5C512D3C-6958-4B87-A4AE-AC0DA5EF23F4}"
 EndProject
@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoComercial.Domain", "G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoComercial.Application", "GestaoComercial.Application\GestaoComercial.Application.csproj", "{7B5A6672-256B-45AD-993F-369471EFF372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoComercial.Infra.External.Identity", "GestaoComercial.Infra.External.Identity\GestaoComercial.Infra.External.Identity.csproj", "{7351E47B-27E2-4491-864D-93CE8E4AB074}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoComercial.Infra.External.Identity", "GestaoComercial.Infra.External.Identity\GestaoComercial.Infra.External.Identity.csproj", "{7351E47B-27E2-4491-864D-93CE8E4AB074}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-CrossCutting", "4-CrossCutting", "{47E90916-570B-4186-AAD5-456B5272013A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoComercial.CrossCutting.Authorization", "GestaoComercial.CrossCutting.Authorization\GestaoComercial.CrossCutting.Authorization.csproj", "{67CAEA71-04D5-49CD-BCD7-00A91C5A986E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{7351E47B-27E2-4491-864D-93CE8E4AB074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7351E47B-27E2-4491-864D-93CE8E4AB074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7351E47B-27E2-4491-864D-93CE8E4AB074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CAEA71-04D5-49CD-BCD7-00A91C5A986E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CAEA71-04D5-49CD-BCD7-00A91C5A986E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CAEA71-04D5-49CD-BCD7-00A91C5A986E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CAEA71-04D5-49CD-BCD7-00A91C5A986E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,8 @@ Global
 		{2CFA9EAB-F74D-4199-92FE-838D22579516} = {58A6F616-232B-4254-AE41-B4BE3E908DD1}
 		{7B5A6672-256B-45AD-993F-369471EFF372} = {E2F85294-97AC-4DA7-A387-9094B0E13B92}
 		{7351E47B-27E2-4491-864D-93CE8E4AB074} = {CF1C0382-4AEC-423C-BA17-5C000C9C97A0}
+		{47E90916-570B-4186-AAD5-456B5272013A} = {A36F63B1-21F2-43CA-A5E1-4CC971CEDF9C}
+		{67CAEA71-04D5-49CD-BCD7-00A91C5A986E} = {47E90916-570B-4186-AAD5-456B5272013A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54078294-8285-4324-A6C6-6E7C3E6CAC9F}

@@ -13,13 +13,10 @@ namespace GestaoComercial.Infra.External.Identity.Extensions
 {
     public static class ExternalComercialConfigExtension
     {
-        public static IServiceCollection ExternalComercialConfig(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddExternalIdentityConfig(this IServiceCollection services, IConfiguration configuration)
         {
             // Configurações de ApiSettings
-            services.Configure<ApiSettingsIdentity>(configuration.GetSection("ApiSettingsIdentity"));
-
-            // Configurações de JWT
-            services.Configure<JwtTokenSettings>(configuration.GetSection("JwtTokenSettings"));
+            services.Configure<ApiSettingsIdentity>(configuration.GetSection("ApiSettingsIdentity"));          
 
             // Configuração do HttpClientFactory
             services.AddHttpClient("ApiExternalIdentity", client =>
