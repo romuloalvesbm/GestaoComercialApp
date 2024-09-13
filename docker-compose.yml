@@ -1,0 +1,38 @@
+services:
+  gestaocomercial.presentation:
+    image: ${DOCKER_REGISTRY-}gestaocomercialpresentation
+    build:
+      context: .
+      dockerfile: GestaoComercial.Presentation/Dockerfile
+    depends_on:
+     - sqlserver
+     - redis
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Homolog 
+    ports:
+     - "5053:8080"
+    networks:
+      - external_network
+
+  sqlserver:
+    container_name: sqlserverdb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+     SA_PASSWORD: "RAlves@2025"
+     ACCEPT_EULA: "Y"
+    ports:
+     - "1434:1433"
+    networks:
+      - external_network
+
+  redis:
+    container_name: localredis
+    image: redis:latest
+    ports:
+      - "6380:6379"
+    networks:
+      - external_network
+
+networks:
+  external_network:
+    external: true
