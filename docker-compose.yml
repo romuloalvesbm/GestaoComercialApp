@@ -10,7 +10,7 @@ services:
     environment:
      - ASPNETCORE_ENVIRONMENT=Homolog 
     ports:
-     - "5053:8080"
+     - "5043:8080"
     networks:
       - external_network
 
